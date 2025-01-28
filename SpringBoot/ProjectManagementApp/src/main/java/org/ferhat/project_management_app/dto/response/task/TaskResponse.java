@@ -3,7 +3,6 @@ package org.ferhat.project_management_app.dto.response.task;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ferhat.project_management_app.dto.response.project.ProjectResponse;
 
