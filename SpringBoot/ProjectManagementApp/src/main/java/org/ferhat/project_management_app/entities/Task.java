@@ -1,7 +1,5 @@
 package org.ferhat.project_management_app.entities;
-
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "task")
@@ -15,7 +13,7 @@ public class Task {
     private String text;
 
     // Her task bir projeye ait
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 

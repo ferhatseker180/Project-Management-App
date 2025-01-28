@@ -33,10 +33,14 @@ public class TaskManager implements ITaskService {
                 .orElseThrow(() -> new NotFoundException(TaskMessage.TASK_NOT_FOUND));
 
         Task task = modelMapperService.forRequest().map(taskSaveRequest, Task.class);
+        task.setId(null);
         task.setProject(project);
+        project.getTasks().add(task);
+        // Task'i kaydet
+        taskRepository.save(task);
 
-        Task savedTask = taskRepository.save(task);
-        TaskResponse taskResponse = modelMapperService.forResponse().map(savedTask, TaskResponse.class);
+        // Response oluştur
+        TaskResponse taskResponse = modelMapperService.forResponse().map(task, TaskResponse.class);
         return TaskResultHelper.created(taskResponse);
     }
 
