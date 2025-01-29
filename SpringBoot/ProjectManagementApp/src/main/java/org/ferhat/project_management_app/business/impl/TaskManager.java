@@ -47,9 +47,6 @@ public class TaskManager implements ITaskService {
     @Override
     public ResultData<List<TaskResponse>> getTasksByProjectId(Long projectId) {
         List<Task> tasks = taskRepository.findByProjectId(projectId);
-        if (tasks.isEmpty()) {
-            throw new NotFoundException(TaskMessage.TASK_NOT_FOUND);
-        }
         List<TaskResponse> taskResponses = tasks.stream()
                 .map(task -> modelMapperService.forResponse().map(task, TaskResponse.class))
                 .collect(Collectors.toList());

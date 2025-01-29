@@ -4,6 +4,7 @@ public class UserMessage {
 
     public static final String USER_CREATED = "User Created";
     public static final String USER_NOT_CREATED = "User Not Created";
+    public static final String LOGIN_SUCCESSFUL = "Login Successful";
     public static final String VALIDATE_ERROR = "Validate Error";
     public static final String USER_FOUND = "User found";
     public static final String USER_NOT_FOUND = "User not found";

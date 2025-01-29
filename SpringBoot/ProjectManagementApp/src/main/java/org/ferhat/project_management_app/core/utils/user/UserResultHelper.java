@@ -24,4 +24,8 @@ public class UserResultHelper {
         return new ResultData<>(true, UserMessage.USER_NOT_FOUND, "404", data);
     }
 
+    public static <T> ResultData<T> successfulLogin(T data) {
+        return new ResultData<>(true, UserMessage.LOGIN_SUCCESSFUL, "200", data);
+    }
+
 }

@@ -1,2 +1,12 @@
-package org.ferhat.project_management_app.core.exceptions;public class UnauthorizedException {
+package org.ferhat.project_management_app.core.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.UNAUTHORIZED)
+public class UnauthorizedException extends RuntimeException{
+
+    public UnauthorizedException(String invalidEmailOrPassword) {
+         super(invalidEmailOrPassword);
+    }
 }

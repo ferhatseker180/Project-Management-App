@@ -9,12 +9,14 @@ import org.ferhat.project_management_app.core.utils.project.ProjectResultHelper;
 import org.ferhat.project_management_app.core.utils.user.UserMessage;
 import org.ferhat.project_management_app.dto.request.project.ProjectSaveRequest;
 import org.ferhat.project_management_app.dto.response.project.ProjectResponse;
-import org.ferhat.project_management_app.dto.response.user.UserResponse;
 import org.ferhat.project_management_app.entities.Project;
 import org.ferhat.project_management_app.entities.User;
 import org.ferhat.project_management_app.repository.ProjectRepository;
 import org.ferhat.project_management_app.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectManager implements IProjectService {
@@ -66,5 +68,13 @@ public class ProjectManager implements IProjectService {
                 .orElseThrow(() -> new NotFoundException(ProjectMessage.PROJECT_NOT_FOUND));
         projectRepository.delete(project);  // CascadeType.ALL ile ilişkili tüm task'ler de silinir
         return ProjectResultHelper.deleted(ProjectMessage.PROJECT_DELETED);
+    }
+
+    @Override
+    public List<ProjectResponse> getProjectsByUserId(Long userId) {
+        List<Project> projects = projectRepository.findByUserId(userId);
+        return projects.stream()
+                .map(project -> modelMapperService.forResponse().map(project, ProjectResponse.class))
+                .collect(Collectors.toList());
     }
 }

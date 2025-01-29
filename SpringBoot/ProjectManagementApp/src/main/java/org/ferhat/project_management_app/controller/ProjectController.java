@@ -9,8 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/projects")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProjectController {
     private final IProjectService projectService;
 
@@ -22,6 +25,12 @@ public class ProjectController {
     public ResponseEntity<ResultData<ProjectResponse>> addProject(@RequestBody ProjectSaveRequest projectSaveRequest) {
         ResultData<ProjectResponse> result = projectService.addProject(projectSaveRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ProjectResponse>> getProjectsByUserId(@PathVariable Long userId) {
+        List<ProjectResponse> projects = projectService.getProjectsByUserId(userId);
+        return ResponseEntity.ok(projects);
     }
 
     @GetMapping("/{id}")

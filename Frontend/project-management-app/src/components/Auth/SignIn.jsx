@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function SignIn({ onLogin, onSignUp }) {
+export default function SignIn({ onLogin, onSignUp, handleChange }) {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-md rounded-lg p-8 w-96">
@@ -19,6 +19,7 @@ export default function SignIn({ onLogin, onSignUp }) {
               placeholder="Enter your email"
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange} // 📌 onChange EKLENDİ
             />
           </div>
           <div className="mb-6">
@@ -32,6 +33,7 @@ export default function SignIn({ onLogin, onSignUp }) {
               placeholder="Enter your password"
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange} // 📌 onChange EKLENDİ
             />
           </div>
           <button
@@ -43,10 +45,7 @@ export default function SignIn({ onLogin, onSignUp }) {
         </form>
         <p className="text-sm text-gray-600 text-center mt-4">
           Don't have an account?{" "}
-          <button
-            onClick={onSignUp}
-            className="text-blue-500 hover:underline"
-          >
+          <button onClick={onSignUp} className="text-blue-500 hover:underline">
             Sign up
           </button>
         </p>

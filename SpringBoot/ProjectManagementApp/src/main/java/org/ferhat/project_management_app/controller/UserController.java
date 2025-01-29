@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.ferhat.project_management_app.business.abstracts.IUserService;
 import org.ferhat.project_management_app.core.result.ResultData;
 import org.ferhat.project_management_app.core.utils.user.UserResultHelper;
+import org.ferhat.project_management_app.dto.request.user.UserLoginRequest;
 import org.ferhat.project_management_app.dto.request.user.UserSaveRequest;
 import org.ferhat.project_management_app.dto.response.user.UserResponse;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/users")
+@CrossOrigin(origins = "http://localhost:5173") // Frontend'in adresini buraya ekle
 public class UserController {
     private final IUserService userService;
 
@@ -30,4 +32,11 @@ public class UserController {
         ResultData<UserResponse> result = UserResultHelper.success(userService.getByEmail(email));
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<ResultData<UserResponse>> login(@Valid @RequestBody UserLoginRequest loginRequest) {
+        UserResponse userResponse = userService.login(loginRequest);
+        return ResponseEntity.ok(UserResultHelper.successfulLogin(userResponse));
+    }
+
 }

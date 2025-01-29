@@ -8,22 +8,30 @@ const NewProject = ({ onAdd, onCancel }) => {
   const description = useRef();
   const dueDate = useRef();
 
-  function handleSave() {
+  const handleSave = () => {
     const enteredTitle = title.current.value;
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
-
+  
     if (enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredDueDate.trim() === '') {
       modal.current.open();
       return;
     }
-
+  
+    const userId = localStorage.getItem("userId");  // Kullanıcı ID'sini al
+  
+    if (!userId) {
+      modal.current.open();  // Kullanıcı ID'si yoksa hata göster
+      return;
+    }
+  
     onAdd({
       title: enteredTitle,
       description: enteredDescription,
       dueDate: enteredDueDate,
+      userId: userId,  // userId'yi ekle
     });
-  }
+  };
 
   return (
     <>
