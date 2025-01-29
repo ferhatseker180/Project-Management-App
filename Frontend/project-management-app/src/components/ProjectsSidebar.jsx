@@ -12,7 +12,7 @@ const ProjectsSidebar = ({
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const userId = localStorage.getItem("userId"); // Local storage'dan userId'yi alıyoruz
+        const userId = localStorage.getItem("userId"); // User ID was taken from local storage
         if (!userId) {
           console.error("User not logged in.");
           return;

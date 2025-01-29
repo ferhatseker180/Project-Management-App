@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/users")
-@CrossOrigin(origins = "http://localhost:5173") // Frontend'in adresini buraya ekle
+@CrossOrigin(origins = "http://localhost:5173") // Frontend port
 public class UserController {
     private final IUserService userService;
 

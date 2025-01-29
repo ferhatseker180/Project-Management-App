@@ -4,14 +4,14 @@ import NewProject from "../../components/NewProject";
 
 export default function AddProjectPage({ projectsState, setProjectsState, setCurrentPage }) {
   const handleAddProject = async (projectData) => {
-    console.log("Gönderilen Project Data:", projectData); // 👀 Backend'e gönderilen veri
+    console.log("Submitted Project Data:", projectData);
 
     try {
         const response = await axios.post("http://localhost:8080/api/projects/add", projectData, {
             headers: { "Content-Type": "application/json" },
         });
 
-        console.log("Projeye API'den gelen yanıt:", response.data);
+        console.log("API response to the project:", response.data);
 
         setProjectsState((prevState) => ({
             ...prevState,
@@ -20,8 +20,8 @@ export default function AddProjectPage({ projectsState, setProjectsState, setCur
 
         setCurrentPage("main");
     } catch (error) {
-        console.error("Proje ekleme hatası:", error.response?.data || error.message);
-        alert("Proje eklenirken bir hata oluştu!");
+        console.error("Error adding a project:", error.response?.data || error.message);
+        alert("An error occurred while adding a project!");
     }
 };
 

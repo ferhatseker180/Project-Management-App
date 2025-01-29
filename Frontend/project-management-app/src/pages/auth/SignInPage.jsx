@@ -16,7 +16,7 @@ export default function SignInPage({ setCurrentPage }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Hata mesajını sıfırla
+    setError(null); // Reset error message
   
     try {
       const response = await axios.post("http://localhost:8080/v1/users/login", formData, {
@@ -24,8 +24,8 @@ export default function SignInPage({ setCurrentPage }) {
       });
   
       console.log("Login Successful:", response.data);
-      const userId = response.data.data.id;  // Kullanıcı ID'sini alın
-      localStorage.setItem("userId", userId);  // localStorage'a kaydedin
+      const userId = response.data.data.id;  // Take the user id from the response
+      localStorage.setItem("userId", userId);  // Save the user id in the local storage
   
       alert("Login successful!");
       setCurrentPage("main");

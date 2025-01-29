@@ -18,10 +18,10 @@ const NewProject = ({ onAdd, onCancel }) => {
       return;
     }
   
-    const userId = localStorage.getItem("userId");  // Kullanıcı ID'sini al
+    const userId = localStorage.getItem("userId");  // Take User ID From Local Storage
   
     if (!userId) {
-      modal.current.open();  // Kullanıcı ID'si yoksa hata göster
+      modal.current.open();  // Show error if no user ID
       return;
     }
   
@@ -29,7 +29,7 @@ const NewProject = ({ onAdd, onCancel }) => {
       title: enteredTitle,
       description: enteredDescription,
       dueDate: enteredDueDate,
-      userId: userId,  // userId'yi ekle
+      userId: userId,
     });
   };
 

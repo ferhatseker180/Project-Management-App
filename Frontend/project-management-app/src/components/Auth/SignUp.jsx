@@ -14,7 +14,7 @@ export default function SignUp({
           Sign Up
         </h2>
         <form onSubmit={handleSubmit}>
-          {/* Full Name */}
+    
           <div className="mb-4">
             <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
               Full Name
@@ -31,7 +31,7 @@ export default function SignUp({
             />
           </div>
 
-          {/* Email */}
+        
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
               Email Address
@@ -48,7 +48,7 @@ export default function SignUp({
             />
           </div>
 
-          {/* Password */}
+        
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
               Password
@@ -65,7 +65,7 @@ export default function SignUp({
             />
           </div>
 
-          {/* Confirm Password */}
+         
           <div className="mb-4">
             <label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-2">
               Confirm Password
@@ -82,17 +82,17 @@ export default function SignUp({
             />
           </div>
 
-          {/* Error Message */}
+        
           {errorMessage && (
             <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
           )}
 
-          {/* Success Message */}
+        
           {successMessage && (
             <p className="text-green-500 text-sm mb-4">{successMessage}</p>
           )}
 
-          {/* Submit Button */}
+        
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200"

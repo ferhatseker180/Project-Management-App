@@ -29,7 +29,7 @@ export default function MainPage({ projectsState, setProjectsState, setCurrentPa
   useEffect(() => {
     const fetchTasks = async () => {
       if (!selectedProject) {
-        // Eğer seçili proje yoksa tasks'ı temizle
+        // Clear tasks if there is no project selected
         setProjectsState((prevState) => ({ ...prevState, tasks: [] }));
         return;
       }
@@ -41,10 +41,9 @@ export default function MainPage({ projectsState, setProjectsState, setCurrentPa
           tasks: Array.isArray(data.data) ? data.data : [] 
         }));
       } catch (error) {
-        // Hata durumunda tasks'ı boş array yap
+        // Make tasks empty array on error
         setProjectsState((prevState) => ({ ...prevState, tasks: [] }));
         
-        // 404 hatasını normal bir durum olarak ele al
         if (error.response?.status === 404) {
           console.log(`No tasks found for project ${selectedProject.id}`);
         } else {

@@ -24,13 +24,13 @@ public class Project {
     private String description;
 
     @Column(name = "due_date", nullable = false)
-    private LocalDate dueDate; // ISO formatında tarih tutabilirsiniz (YYYY-MM-DD)
+    private LocalDate dueDate; // (YYYY-MM-DD)
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // Her proje birden fazla task içerir
+    // Each project can contain more than one task
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 

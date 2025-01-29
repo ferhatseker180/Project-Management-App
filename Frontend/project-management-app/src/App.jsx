@@ -13,7 +13,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState("login"); // 'login', 'signUp', 'main', or 'addProject'
 
-  // Sayfa geçişleri
+  // Page transitions
   if (currentPage === "login") {
     return <SignInPage setCurrentPage={setCurrentPage} />;
   }

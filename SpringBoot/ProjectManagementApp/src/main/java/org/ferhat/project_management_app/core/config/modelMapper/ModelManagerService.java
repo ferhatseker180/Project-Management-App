@@ -14,12 +14,12 @@ public class ModelManagerService implements IModelMapperService {
         this.requestModelMapper = requestModelMapper;
         this.responseModelMapper = responseModelMapper;
 
-        // Request için yapılandırma
+        // Configuration for Request
         this.requestModelMapper.getConfiguration()
                 .setAmbiguityIgnored(true)
                 .setMatchingStrategy(MatchingStrategies.STANDARD);
 
-        // Response için yapılandırma
+        // Configuration for Response
         this.responseModelMapper.getConfiguration()
                 .setAmbiguityIgnored(true)
                 .setMatchingStrategy(MatchingStrategies.LOOSE);

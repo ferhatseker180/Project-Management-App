@@ -12,7 +12,7 @@ public class Task {
     @Column(name = "text", nullable = false)
     private String text;
 
-    // Her task bir projeye ait
+    // Each task belongs to a project
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;

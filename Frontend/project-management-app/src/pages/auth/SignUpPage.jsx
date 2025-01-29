@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios"; // Axios kütüphanesi eklendi
+import axios from "axios";
 import SignUp from "../../components/Auth/SignUp";
 
 export default function SignUpPage({ onSignUpSuccess }) {
@@ -24,29 +24,29 @@ export default function SignUpPage({ onSignUpSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Şifre eşleşmesini kontrol et
+    // Check password match
     if (formData.password !== formData.confirmPassword) {
       setErrorMessage("Passwords do not match!");
-      return; // Eğer eşleşmiyorsa formu gönderme
+      return; // Do not submit the form if it does not match
     }
 
     try {
-      // Backend API'ye kayıt isteği gönder
+      // Send registration request to Backend API
       const response = await axios.post("http://localhost:8080/v1/users", {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
       });
 
-      // Başarılı kayıt sonrası mesaj göster
+      // Show message after successful registration
       setSuccessMessage("Sign-up successful! You can now log in.");
-      setErrorMessage(""); // Hata mesajını temizle
+      setErrorMessage(""); // Clear Error message
       alert("Sign-up successful!");
-      onSignUpSuccess(); // Yönlendirme işlemi
+      onSignUpSuccess(); // Routing process
 
       console.log("Response from backend:", response.data);
     } catch (error) {
-      // Hata durumunda mesaj göster
+      // Show message in case of error
       setErrorMessage(
         error.response?.data?.message || "An error occurred during sign-up!"
       );

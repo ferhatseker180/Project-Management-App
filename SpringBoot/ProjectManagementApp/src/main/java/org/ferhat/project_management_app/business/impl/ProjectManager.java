@@ -32,24 +32,23 @@ public class ProjectManager implements IProjectService {
 
     @Override
     public ResultData<ProjectResponse> addProject(ProjectSaveRequest projectSaveRequest) {
-        // Kullanıcıyı bul
+        // Find User
         User user = userRepository.findById(projectSaveRequest.getUserId())
                 .orElseThrow(() -> new NotFoundException(UserMessage.USER_NOT_FOUND));
 
-        // Request'i Project'e dönüştür
+        // Convert Request to Project
         Project project = modelMapperService.forRequest().map(projectSaveRequest, Project.class);
 
-        // ID'nin null olduğundan emin ol
+        // Make sure the ID is null
         project.setId(null);
 
-        // Kullanıcı ve proje arasındaki ilişkiyi oluştur
+        // Create the relationship between the user and the project
         project.setUser(user);
         user.getProjects().add(project);
 
-        // Projeyi kaydet
         Project savedProject = projectRepository.save(project);
 
-        // Response döndür
+        // Response return
         ProjectResponse projectResponse = modelMapperService.forResponse().map(project, ProjectResponse.class);
         return ProjectResultHelper.created(projectResponse);
     }
@@ -66,7 +65,7 @@ public class ProjectManager implements IProjectService {
     public ResultData<String> deleteProjectById(Long id) {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ProjectMessage.PROJECT_NOT_FOUND));
-        projectRepository.delete(project);  // CascadeType.ALL ile ilişkili tüm task'ler de silinir
+        projectRepository.delete(project);  // All tasks associated with CascadeType.ALL will also be deleted
         return ProjectResultHelper.deleted(ProjectMessage.PROJECT_DELETED);
     }
 
