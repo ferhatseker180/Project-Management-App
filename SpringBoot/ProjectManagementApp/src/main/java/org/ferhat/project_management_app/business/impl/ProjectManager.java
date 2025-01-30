@@ -8,6 +8,7 @@ import org.ferhat.project_management_app.core.utils.project.ProjectMessage;
 import org.ferhat.project_management_app.core.utils.project.ProjectResultHelper;
 import org.ferhat.project_management_app.core.utils.user.UserMessage;
 import org.ferhat.project_management_app.dto.request.project.ProjectSaveRequest;
+import org.ferhat.project_management_app.dto.request.project.ProjectUpdateRequest;
 import org.ferhat.project_management_app.dto.response.project.ProjectResponse;
 import org.ferhat.project_management_app.entities.Project;
 import org.ferhat.project_management_app.entities.User;
@@ -75,5 +76,26 @@ public class ProjectManager implements IProjectService {
         return projects.stream()
                 .map(project -> modelMapperService.forResponse().map(project, ProjectResponse.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ResultData<ProjectResponse> updateProject(ProjectUpdateRequest projectUpdateRequest) {
+        // Check if the project exists
+        Project project = projectRepository.findById(projectUpdateRequest.getId())
+                .orElseThrow(() -> new NotFoundException(ProjectMessage.PROJECT_NOT_FOUND));
+
+        // Update Project
+        project.setTitle(projectUpdateRequest.getTitle());
+        project.setDescription(projectUpdateRequest.getDescription());
+        project.setDueDate(projectUpdateRequest.getDueDate());
+
+        // Save The Updated Project
+        Project updatedProject = projectRepository.save(project);
+
+        // Convert To Response
+        ProjectResponse projectResponse = modelMapperService.forResponse()
+                .map(updatedProject, ProjectResponse.class);
+
+        return ProjectResultHelper.success(projectResponse);
     }
 }

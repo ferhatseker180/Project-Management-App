@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import axios from 'axios';
 
@@ -7,12 +7,15 @@ const ProjectsSidebar = ({
   projects,
   onSelectProject,
   selectedProjectId,
-  setProjectsState
+  setProjectsState,
+  onResetProject
 }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const userId = localStorage.getItem("userId"); // User ID was taken from local storage
+        const userId = localStorage.getItem("userId");
         if (!userId) {
           console.error("User not logged in.");
           return;
@@ -31,32 +34,88 @@ const ProjectsSidebar = ({
   }, [setProjectsState]);
 
   return (
-    <aside className="w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl">
-      <h2 className="mb-8 font-bold uppercase md:text-xl text-stone-200">Your Projects</h2>
-      <div>
-        <Button onClick={onStartAddProject}>+ Add Project</Button>
-      </div>
-      <ul className="mt-8">
-        {projects.map((project) => {
-          let cssClasses = "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800";
-          if (project.id === selectedProjectId) {
-            cssClasses += " bg-stone-800 text-stone-200";
-          } else {
-            cssClasses += " text-stone-400";
-          }
-          return (
-            <li key={project.id}>
-              <button
-                className={cssClasses}
-                onClick={() => onSelectProject(project.id)}
-              >
-                {project.title}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </aside>
+    <>
+      {/* Mobile Menu Button - Sadece küçük ekranlarda görünür */}
+      <button
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 rounded-lg text-white"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? '✕' : '☰'}
+      </button>
+
+      {/* Overlay - Mobile menü açıkken arka planı karartır */}
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      <aside className={`
+        fixed lg:static
+        top-0 bottom-0 left-0
+        w-72 sm:w-80 lg:w-96
+        bg-gradient-to-b from-slate-800 to-slate-900
+        text-stone-50 
+        rounded-r-xl 
+        flex flex-col
+        transition-transform duration-300 ease-in-out
+        z-50
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        {/* Header Section */}
+        <div className="p-4 sm:p-6 border-b border-slate-700">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6 flex items-center">
+            <span className="bg-blue-500 w-2 h-2 rounded-full mr-2"></span>
+            Your Projects
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button 
+              onClick={onStartAddProject}
+              className="bg-blue-600 hover:bg-blue-700 transition-colors duration-200 
+                       text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg flex items-center 
+                       justify-center gap-2 w-full sm:w-auto"
+            >
+              <span className="text-lg">+</span> Add Project
+            </Button>
+            <Button 
+              onClick={onResetProject} 
+              className="bg-slate-700 hover:bg-slate-600 transition-colors duration-200 
+                       text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg flex items-center 
+                       justify-center gap-2 w-full sm:w-auto"
+            >
+              <span>←</span> Home
+            </Button>
+          </div>
+        </div>
+
+        {/* Projects List */}
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4">
+          <ul className="space-y-2">
+            {projects.map((project) => (
+              <li key={project.id}>
+                <button
+                  className={`w-full p-2 sm:p-3 rounded-lg transition-all duration-200 
+                            flex items-center gap-2 sm:gap-3 text-left
+                    ${project.id === selectedProjectId 
+                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
+                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700'}`}
+                  onClick={() => {
+                    onSelectProject(project.id);
+                    setIsMobileMenuOpen(false); // Mobile'da seçim yapıldığında menüyü kapat
+                  }}
+                >
+                  <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
+                    project.id === selectedProjectId ? 'bg-white' : 'bg-slate-500'
+                  }`}></div>
+                  <span className="text-xs sm:text-sm font-medium truncate">{project.title}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </>
   );
 };
 
