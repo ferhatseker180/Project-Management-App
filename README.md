@@ -49,6 +49,18 @@ A full-stack project management application built with **React (Frontend)** and 
 | PUT    | `/v1/tasks/{taskId}`          | Update a task by ID          |
 | DELETE | `/v1/tasks/{taskId}`          | Delete a task by ID          |
 
+## Project Images
+
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Sign-Up%20Page.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Login%20Page.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Succesfull%20Login.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Failed%20Login.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Main%20Screen.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Create%20Project.PNG"> 
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Project%20Page.PNG">
+<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Zero%20Task%20Page.PNG">
+
+
 ## 📂 Project Structure
 ```bash
 Project-Management-App/
@@ -68,22 +80,9 @@ Project-Management-App/
 │   ├── src/
 │   │   ├── components/      # UI components
 │   │   ├── pages/           # Page-level components
-│   │   ├── services/        # API calls
 │   │   ├── context/         # Global state management
 │   │   ├── App.js           # Main React component
 │   ├── package.json  # Frontend dependencies
 │
 │── README.md
-
-## 📂 Project Images
-
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Sign-Up%20Page.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Login%20Page.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Succesfull%20Login.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Failed%20Login.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Main%20Screen.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Create%20Project.PNG"> 
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Project%20Page.PNG">
-<img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Zero%20Task%20Page.PNG">
-
 
