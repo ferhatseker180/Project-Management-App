@@ -87,3 +87,8 @@ Project-Management-App/
 │
 │── README.md
 
+## 👤 Author
+- **Ferhat Şeker**
+- 📧 Contact: [LinkedIn](https://www.linkedin.com/in/ferhatseker180) | [GitHub](https://github.com/ferhatseker180)
+
+
