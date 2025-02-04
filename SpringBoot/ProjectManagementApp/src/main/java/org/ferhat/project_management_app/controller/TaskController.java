@@ -31,6 +31,15 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTasksByProjectId(projectId));
     }
 
+    // Patch Mapping provides updates to the choosen part
+    @PatchMapping("/{taskId}/status")
+    public ResponseEntity<ResultData<TaskResponse>> updateTaskStatus(
+            @PathVariable Long taskId,
+            @RequestParam boolean completed
+    ) {
+        return ResponseEntity.ok(taskService.updateTaskStatus(taskId, completed));
+    }
+
     @DeleteMapping("/{taskId}")
     public ResponseEntity<ResultData<String>> deleteTask(@PathVariable Long taskId) {
         return ResponseEntity.ok(taskService.deleteTask(taskId));

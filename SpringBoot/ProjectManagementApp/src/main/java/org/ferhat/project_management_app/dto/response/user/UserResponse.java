@@ -10,13 +10,16 @@ public class UserResponse {
     private Long id;
     private String fullName;
     private String email;
+    private String token;
+
     @JsonManagedReference
     private List<ProjectResponse> projects;
 
-    public UserResponse(Long id, String fullName, String email, List<ProjectResponse> projects) {
+    public UserResponse(Long id, String fullName, String email, String token, List<ProjectResponse> projects) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
+        this.token = token;
         this.projects = projects;
     }
 
@@ -45,6 +48,14 @@ public class UserResponse {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setEmail(String email) {

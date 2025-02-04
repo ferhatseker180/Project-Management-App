@@ -12,6 +12,9 @@ public class Task {
     @Column(name = "text", nullable = false)
     private String text;
 
+    @Column(name = "is_completed", columnDefinition = "boolean default false")
+    private boolean completed = false;
+
     // Each task belongs to a project
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
@@ -31,6 +34,14 @@ public class Task {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public Project getProject() {

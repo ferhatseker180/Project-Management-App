@@ -3,6 +3,7 @@ import AddProjectPage from "./pages/add_project_page/AddProjectPage";
 import MainPage from "./pages/main_page/MainPage";
 import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
+import axios from 'axios';
 
 function App() {
   const [projectsState, setProjectsState] = useState({
@@ -10,6 +11,11 @@ function App() {
     projects: [],
     tasks: [],
   });
+
+  const token = localStorage.getItem('token');
+if (token) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
 
   const [currentPage, setCurrentPage] = useState("login"); // 'login', 'signUp', 'main', or 'addProject'
 

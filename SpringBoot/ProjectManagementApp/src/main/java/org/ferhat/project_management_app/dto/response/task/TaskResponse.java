@@ -13,6 +13,7 @@ public class TaskResponse {
 
     private Long id;
     private String text;
+    private boolean completed;
     @JsonBackReference
     private ProjectResponse project;
 
@@ -34,6 +35,14 @@ public class TaskResponse {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public void setProject(ProjectResponse project) {

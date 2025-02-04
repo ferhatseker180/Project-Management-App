@@ -12,4 +12,5 @@ public interface IUserService {
     UserResponse getByEmail(String email);
 
     UserResponse login(UserLoginRequest userLoginRequest);
+
 }

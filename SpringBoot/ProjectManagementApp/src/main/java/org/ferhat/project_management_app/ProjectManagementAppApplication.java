@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class ProjectManagementAppApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProjectManagementAppApplication.class, args);
+
     }
 
 }

@@ -54,6 +54,18 @@ public class TaskManager implements ITaskService {
     }
 
     @Override
+    public ResultData<TaskResponse> updateTaskStatus(Long taskId, boolean completed) {
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new NotFoundException(TaskMessage.TASK_NOT_FOUND));
+
+        task.setCompleted(completed);
+        Task updatedTask = taskRepository.save(task);
+
+        TaskResponse taskResponse = modelMapperService.forResponse().map(updatedTask, TaskResponse.class);
+        return TaskResultHelper.success(taskResponse);
+    }
+
+    @Override
     public ResultData<String> deleteTask(Long taskId) {
         if (!taskRepository.existsById(taskId)) {
             throw new NotFoundException(TaskMessage.TASK_NOT_FOUND);
