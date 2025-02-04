@@ -87,11 +87,11 @@ Project-Management-App/
 │
 │── README.md
 
+
 ## 👤 Author  
 **Ferhat Şeker**  
 
 📧 Contact:  
-- [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/ferhatseker180)  
-- [![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/ferhatseker180)  
-
+- [LinkedIn](https://www.linkedin.com/in/ferhatseker180)  
+- [GitHub](https://github.com/ferhatseker180)
 
