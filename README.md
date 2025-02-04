@@ -27,27 +27,27 @@ A full-stack project management application built with **React (Frontend)** and 
 
 ## 📌 API Endpoints
 ### **Authentication**
-| Method | Endpoint               | Description                   |
-|--------|------------------------|-------------------------------|
-| POST   | `/v1/users/register`   | Register a new user          |
-| POST   | `/v1/users/login`      | User login and token generation |
+| Method | Endpoint                        | Description                    |
+|--------|---------------------------------|--------------------------------|
+| POST   | `/v1/users`                     | Register a new user            |
+| POST   | `/v1/users/login`               | User login and token generation|
 
 ### **Projects**
-| Method | Endpoint               | Description                   |
-|--------|------------------------|-------------------------------|
-| GET    | `/v1/projects`         | Get all projects for the user |
-| POST   | `/v1/projects`         | Create a new project         |
-| GET    | `/v1/projects/{id}`    | Get a specific project by ID |
-| PUT    | `/v1/projects/{id}`    | Update a project by ID       |
-| DELETE | `/v1/projects/{id}`    | Delete a project by ID       |
+| Method | Endpoint                        | Description                    |
+|--------|---------------------------------|--------------------------------|
+| GET    | `/api/projects/user/{userId}`   | Get all projects for the user  |
+| POST   | `/api/projects/add`             | Create a new project           |
+| GET    | `/api/projects/{id}`            | Get a specific project by ID   |
+| PUT    | `/api/projects/update`          | Update a project by ID         |
+| DELETE | `/api/projects/{id}`            | Delete a project by ID         |
 
 ### **Tasks**
-| Method | Endpoint                      | Description                   |
-|--------|-------------------------------|-------------------------------|
-| GET    | `/v1/tasks/{projectId}`       | Get all tasks for a project  |
-| POST   | `/v1/tasks/{projectId}`       | Add a new task to a project  |
-| PUT    | `/v1/tasks/{taskId}`          | Update a task by ID          |
-| DELETE | `/v1/tasks/{taskId}`          | Delete a task by ID          |
+| Method | Endpoint                        | Description                    |
+|--------|-------------------------------  |--------------------------------|
+| GET    | `/api/tasks/project/{projectId}'|Get all tasks for a project     |
+| POST   | `/api/tasks/add`                | Add a new task to a project    |
+| PUT    | `/api/tasks/{taskId}`           | Update a task by ID            |
+| DELETE | `/api/tasks/{taskId}`           | Delete a task by ID            |
 
 ## Project Images
 
@@ -67,11 +67,12 @@ Project-Management-App/
 │── backend/
 │   ├── src/main/java/com/example/projectmanagement/
 │   │   ├── controller/      # API controllers
-│   │   ├── service/         # Business logic
+│   │   ├── business/        # Business logic
 │   │   ├── repository/      # Database access layer
-│   │   ├── config/          # Security & application config
+│   │   ├── core/            # Security & application config & Exceptions
 │   │   ├── dto/             # Data Transfer Objects (DTOs)
-│   │   ├── model/           # Entity classes
+│   │   ├── entities/        # Entity classes
+│   │   ├── security/        # JWT Layer
 │   ├── src/main/resources/
 │   │   ├── application.properties  # Database & app settings
 │   ├── pom.xml  # Maven dependencies
@@ -80,8 +81,8 @@ Project-Management-App/
 │   ├── src/
 │   │   ├── components/      # UI components
 │   │   ├── pages/           # Page-level components
-│   │   ├── context/         # Global state management
-│   │   ├── App.js           # Main React component
+│   │   ├── project_images/  #Project's Images
+│   │   ├── App.jsx          # Main React component
 │   ├── package.json  # Frontend dependencies
 │
 │── README.md
