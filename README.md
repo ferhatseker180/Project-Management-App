@@ -91,7 +91,7 @@ Project-Management-App/
 **Ferhat Şeker**  
 
 📧 Contact:  
-[LinkedIn](https://www.linkedin.com/in/ferhatseker180)  
-[GitHub](https://github.com/ferhatseker180) 
+- [LinkedIn Profile](https://www.linkedin.com/in/ferhatseker180)  
+- [GitHub Profile](https://github.com/ferhatseker180)  
 
 
