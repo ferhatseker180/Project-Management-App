@@ -60,7 +60,6 @@ A full-stack project management application built with **React (Frontend)** and 
 <img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Project%20Page.PNG">
 <img src="https://raw.githubusercontent.com/ferhatseker180/Project-Management-App/refs/heads/main/Frontend/project-management-app/src/project_images/Zero%20Task%20Page.PNG">
 
-
 ## 📂 Project Structure
 ```bash
 Project-Management-App/
@@ -87,11 +86,17 @@ Project-Management-App/
 │
 │── README.md
 
+```
+
 
 ## 👤 Author  
 **Ferhat Şeker**  
-
 📧 Contact:  
 - [LinkedIn](https://www.linkedin.com/in/ferhatseker180)  
 - [GitHub](https://github.com/ferhatseker180)
+
+
+
+
+
 
