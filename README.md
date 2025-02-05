@@ -6,7 +6,7 @@ A full-stack project management application built with **React (Frontend)** and 
 - 🔐 **Authentication & Authorization:** User login, registration, and authentication using JWT.
 - 📁 **Project Management:** Create, edit, and delete projects.
 - ✅ **Task Management:** Add, update, delete, and mark tasks as completed.
-- 📊 **Task Progress Bar:** Displays the number of tasks and completed tasks within a project.
+- 📊 **Indicator displaying** The total and completed task count
 - 🛠️ **REST API Integration:** Seamless communication between frontend and backend.
 - 🎨 **Responsive UI:** Optimized for desktop and mobile devices.
 
